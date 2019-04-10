@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block head %}
+  <link href="{% static 'articles.css'%}" rel="stylesheet" />
+{% endblock %}
+{% block title %}Articles || Bloggie{% endblock %}
+{% block body %}
+  <div class="topnav" id="myTopnav">
+    <a class="navbar-brand" id="brand" href="/">Tech Blog</a>
+  </div>
+  <h1 style="text-align: center;">Articles</h1>
+  <div id="container">
+    {% for article in articles %}
+      <div id="articles-container">
+        <div class="img-container">
+          <img src="{{MEDIA_URL}}{{article.picture.url}}" width="200px" height="auto"/>
+        </div>
+        <div class="txt-container">
+          <h3>{{article.title}}</h3>
+          <p>{{article.content|linebreaksbr}}</p>
+          <p><b>{{article.created}}</b></p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
