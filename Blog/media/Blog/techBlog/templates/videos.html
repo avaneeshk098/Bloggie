@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block head %}
+  <link href="{% static 'videos.css'%}" rel="stylesheet" />
+{% endblock %}
+{% block title %}Videos || Bloggie{% endblock %}
+{% block body %}
+  <div class="topnav" id="myTopnav">
+    <a class="navbar-brand" id="brand" href="/">Bloggie</a>
+  </div>
+  <h1 style="text-align: center;">Videos</h1>
+  <div id="container">
+    {% for video in videos %}
+      <div id="articles-container">
+          <h3>{{video.title}}</h3>
+          <div class="img-container">
+            <video controls src="{{MEDIA_URL}}{{video.video.url}}" width="100%" height="auto" poster="{{MEDIA_URL}}{{video.poster.url}}" />
+          </div>
+          <p style="margin-left: 10px;"><b>{{video.created}}</b></p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
